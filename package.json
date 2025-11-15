@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://soju69.github.io/minty-secure-connect/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
