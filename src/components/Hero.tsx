@@ -61,18 +61,18 @@ const Hero = () => {
             </Button>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-8 pt-8 text-sm text-muted-foreground animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <div className="flex items-center gap-2">
-              <Zap className="w-5 h-5 text-primary" />
-              <span>Сверхбыстрая скорость</span>
+          <div className="flex flex-wrap justify-center gap-4 pt-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <div className="inline-flex items-center gap-2 bg-orange/10 backdrop-blur-sm px-4 py-2 rounded-full border border-orange/30">
+              <Zap className="w-4 h-4 text-orange" />
+              <span className="text-sm text-orange">Сверхбыстрая скорость</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Shield className="w-5 h-5 text-primary" />
-              <span>Шифрование AES-256</span>
+            <div className="inline-flex items-center gap-2 bg-orange/10 backdrop-blur-sm px-4 py-2 rounded-full border border-orange/30">
+              <Shield className="w-4 h-4 text-orange" />
+              <span className="text-sm text-orange">Шифрование AES-256</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Globe className="w-5 h-5 text-primary" />
-              <span>100+ серверов</span>
+            <div className="inline-flex items-center gap-2 bg-orange/10 backdrop-blur-sm px-4 py-2 rounded-full border border-orange/30">
+              <Globe className="w-4 h-4 text-orange" />
+              <span className="text-sm text-orange">100+ серверов</span>
             </div>
           </div>
         </div>
