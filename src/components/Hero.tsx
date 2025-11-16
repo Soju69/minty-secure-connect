@@ -64,7 +64,7 @@ const Hero = () => {
           <div className="flex flex-wrap justify-center gap-4 pt-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <div className="inline-flex items-center gap-2 bg-orange/10 backdrop-blur-sm px-4 py-2 rounded-full border border-orange/30">
               <Zap className="w-4 h-4 text-orange" />
-              <span className="text-sm text-orange">Сверхбыстрая скорость</span>
+              <span className="text-sm text-orange">Стабильное соединение</span>
             </div>
             <div className="inline-flex items-center gap-2 bg-orange/10 backdrop-blur-sm px-4 py-2 rounded-full border border-orange/30">
               <Shield className="w-4 h-4 text-orange" />
