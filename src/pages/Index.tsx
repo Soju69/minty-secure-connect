@@ -2,7 +2,6 @@ import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import Pricing from "@/components/Pricing";
 import Footer from "@/components/Footer";
-import Terminal from "@/components/Terminal";
 
 const Index = () => {
   return (
@@ -11,7 +10,6 @@ const Index = () => {
       <Features />
       <Pricing />
       <Footer />
-      <Terminal />
     </div>
   );
 };

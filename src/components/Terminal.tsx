@@ -33,9 +33,9 @@ const Terminal = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-8 right-8 w-[400px] max-w-[calc(100vw-4rem)] bg-card border border-border rounded-lg shadow-2xl overflow-hidden z-50 animate-slide-in-bottom">
+    <div className="w-full bg-secondary border border-border rounded-lg overflow-hidden animate-fade-in">
       {/* Terminal Header */}
-      <div className="bg-secondary px-4 py-3 flex items-center gap-3 border-b border-border">
+      <div className="bg-muted px-4 py-3 flex items-center gap-3 border-b border-border">
         <div className="flex gap-2">
           <div className="w-3 h-3 rounded-full bg-red-500" />
           <div className="w-3 h-3 rounded-full bg-yellow-500" />
