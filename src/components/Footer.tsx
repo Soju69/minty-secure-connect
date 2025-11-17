@@ -1,9 +1,11 @@
 import { Shield } from "lucide-react";
+import Terminal from "./Terminal";
 
 const Footer = () => {
   return (
-    <footer className="bg-card border-t border-border py-12 px-6">
+    <footer className="py-12 px-6 bg-background">
       <div className="container mx-auto">
+        <div className="bg-card border border-border rounded-2xl p-8 md:p-12 shadow-2xl">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div className="space-y-4">
             <div className="flex items-center gap-2">
@@ -48,8 +50,16 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          <p>© 2024 SecureVPN. Все права защищены.</p>
+          <div className="border-t border-border pt-8 mb-8 text-center text-sm text-muted-foreground">
+            <p>© 2024 SecureVPN. Все права защищены.</p>
+          </div>
+          
+          {/* Terminal in footer */}
+          <div className="flex justify-end">
+            <div className="w-full md:w-[400px]">
+              <Terminal />
+            </div>
+          </div>
         </div>
       </div>
     </footer>
