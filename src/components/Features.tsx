@@ -1,5 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { Shield, Zap, Lock, Eye, Server, Wifi } from "lucide-react";
+import { useRef } from "react";
+import useDecryptText from "@/hooks/useDecryptText";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 
 const features = [
   {
@@ -35,12 +38,19 @@ const features = [
 ];
 
 const Features = () => {
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const { hasIntersected } = useIntersectionObserver(titleRef, { threshold: 0.5 });
+  const title = useDecryptText("Почему выбирают нас?", hasIntersected);
+  
   return (
     <section className="py-24 px-6 bg-background">
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold">
-            Почему выбирают нас?
+          <h2 
+            ref={titleRef}
+            className={`text-4xl md:text-5xl font-bold decrypt-text ${title.isDecrypting ? 'decrypting' : ''}`}
+          >
+            {title.displayText}
           </h2>
           <p className="text-xl text-muted-foreground">
             Передовые технологии для вашей безопасности и комфорта
