@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Shield, Zap, Globe, Server, Cloud } from "lucide-react";
+import useDecryptText from "@/hooks/useDecryptText";
 
 const Hero = () => {
+  const title1 = useDecryptText("Ваша приватность —", true);
+  const title2 = useDecryptText("наш приоритет", true);
+  
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
       {/* Animated background with server and clouds */}
@@ -44,8 +48,12 @@ const Hero = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
-            Ваша приватность —{" "}
-            <span className="text-primary bg-clip-text">наш приоритет</span>
+            <span className={`decrypt-text ${title1.isDecrypting ? 'decrypting' : ''}`}>
+              {title1.displayText}
+            </span>{" "}
+            <span className={`text-primary bg-clip-text decrypt-text ${title2.isDecrypting ? 'decrypting' : ''}`}>
+              {title2.displayText}
+            </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>

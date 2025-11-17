@@ -58,3 +58,70 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  /* Terminal animations */
+  @keyframes terminal-line {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes terminal-cursor {
+    0%, 49% {
+      opacity: 1;
+    }
+    50%, 100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes slide-in-bottom {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-terminal-line {
+    animation: terminal-line 0.3s ease-out;
+  }
+
+  .animate-terminal-cursor {
+    animation: terminal-cursor 1s infinite;
+  }
+
+  .animate-slide-in-bottom {
+    animation: slide-in-bottom 0.5s ease-out;
+  }
+
+  /* Decrypt text effect */
+  .decrypt-text {
+    position: relative;
+  }
+
+  .decrypt-text.decrypting {
+    animation: decrypt-glitch 0.1s infinite;
+  }
+
+  @keyframes decrypt-glitch {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-2px);
+    }
+    75% {
+      transform: translateX(2px);
+    }
+  }
+}
