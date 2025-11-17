@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Terminal Window -->
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <span class="terminal-button red"></span>
+                <span class="terminal-button yellow"></span>
+                <span class="terminal-button green"></span>
+            </div>
+            <div class="terminal-title">vpn@secure:~$</div>
+        </div>
+        <div class="terminal-body" id="terminal-output">
+            <div class="terminal-line">> Инициализация защищенного соединения...</div>
+        </div>
+    </div>
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-background">
@@ -46,7 +60,7 @@
                     <span>Защита на военном уровне</span>
                 </div>
                 
-                <h1 class="fade-in delay-1">
+                <h1 class="fade-in delay-1 decrypt-text" data-text="Ваша приватность — наш приоритет">
                     Ваша приватность — <span class="text-primary">наш приоритет</span>
                 </h1>
                 
@@ -89,7 +103,7 @@
     <section class="features">
         <div class="container">
             <div class="section-header">
-                <h2>Почему выбирают нас?</h2>
+                <h2 class="decrypt-text" data-text="Почему выбирают нас?">Почему выбирают нас?</h2>
                 <p>Передовые технологии для вашей безопасности и комфорта</p>
             </div>
             
@@ -169,7 +183,7 @@
     <section class="pricing">
         <div class="container">
             <div class="section-header">
-                <h2>Выберите свой план</h2>
+                <h2 class="decrypt-text" data-text="Выберите свой план">Выберите свой план</h2>
                 <p>Гибкие тарифы для любых потребностей</p>
             </div>
             
@@ -355,5 +369,107 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Terminal Animation
+        const terminalOutput = document.getElementById('terminal-output');
+        const logs = [
+            '> Инициализация защищенного соединения...',
+            '> Подключение к серверу [NY-USA-01]...',
+            '> Установка шифрования AES-256...',
+            '> Проверка безопасности соединения...',
+            '> ✓ Соединение установлено',
+            '> ✓ IP адрес скрыт',
+            '> ✓ Трафик зашифрован',
+            '> Скорость: 248 Мбит/с',
+            '> Задержка: 12ms',
+            '> Статус: ЗАЩИЩЕНО'
+        ];
+        
+        let currentLog = 0;
+        
+        function addTerminalLine() {
+            if (currentLog < logs.length) {
+                const line = document.createElement('div');
+                line.className = 'terminal-line';
+                line.textContent = logs[currentLog];
+                terminalOutput.appendChild(line);
+                currentLog++;
+                
+                // Keep only last 10 lines
+                const lines = terminalOutput.querySelectorAll('.terminal-line');
+                if (lines.length > 10) {
+                    lines[0].remove();
+                }
+                
+                setTimeout(addTerminalLine, Math.random() * 1000 + 800);
+            } else {
+                // Restart after all logs
+                setTimeout(() => {
+                    terminalOutput.innerHTML = '';
+                    currentLog = 0;
+                    addTerminalLine();
+                }, 3000);
+            }
+        }
+        
+        // Start terminal animation after a delay
+        setTimeout(addTerminalLine, 2000);
+        
+        // Decrypt Text Animation
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+        
+        function decryptText(element) {
+            const originalText = element.getAttribute('data-text');
+            const length = originalText.length;
+            let iterations = 0;
+            const maxIterations = length * 2;
+            
+            const interval = setInterval(() => {
+                element.textContent = originalText
+                    .split('')
+                    .map((char, index) => {
+                        if (index < iterations / 2) {
+                            return originalText[index];
+                        }
+                        return characters[Math.floor(Math.random() * characters.length)];
+                    })
+                    .join('');
+                
+                iterations++;
+                
+                if (iterations >= maxIterations) {
+                    clearInterval(interval);
+                    element.textContent = originalText;
+                }
+            }, 30);
+        }
+        
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('decrypted')) {
+                    entry.target.classList.add('decrypted');
+                    decryptText(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all decrypt-text elements
+        document.querySelectorAll('.decrypt-text').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Trigger decrypt on hero title immediately
+        const heroTitle = document.querySelector('h1.decrypt-text');
+        if (heroTitle) {
+            setTimeout(() => decryptText(heroTitle), 500);
+        }
+    </script>
 </body>
 </html>
